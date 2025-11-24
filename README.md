@@ -54,3 +54,4 @@ Aplikacja korzysta z relacyjnej bazy danych MySQL. Struktura zawiera **5 główn
 [USER] --<wystawia>-- [AD]
 [CATEGORY] --<zawiera>-- [AD]
 [USER] --<wykonuje>-- [TRANSACTION]
+.
