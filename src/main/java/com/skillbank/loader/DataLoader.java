@@ -1,5 +1,6 @@
 package com.skillbank.loader;
 
+import com.skillbank.model.Category;
 import com.skillbank.model.Role;
 import com.skillbank.repository.CategoryRepository;
 import com.skillbank.repository.RoleRepository;
@@ -38,13 +39,14 @@ public class DataLoader implements CommandLineRunner {
             createCategory("Transport");
 
             System.out.println("--- ADDED STARTING ROLES ---");
-
         }
-        private void createCategory (String name){
-            Category category = new Category();
-            category.setName(name);
-            categoryRepository.save(category);
-        }
-
-
     }
+
+    private void createCategory(String name) {
+        Category category = new Category();
+        category.setName(name);
+        categoryRepository.save(category);
+    }
+
+
+}
