@@ -50,8 +50,8 @@ Aplikacja korzysta z relacyjnej bazy danych MySQL. Struktura zawiera **5 główn
 
 ### Schemat Logiczny
 ```mermaid
-[USER] --<posiada>-- [ROLE]
-[USER] --<wystawia>-- [AD]
-[CATEGORY] --<zawiera>-- [AD]
-[USER] --<wykonuje>-- [TRANSACTION]
-.
+erDiagram
+    USER ||--o{ ROLE : posiada
+    USER ||--o{ AD : wystawia
+    CATEGORY ||--o{ AD : zawiera
+    USER ||--o{ TRANSACTION : wykonuje
