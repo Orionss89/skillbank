@@ -52,7 +52,7 @@ Aplikacja wykorzystuje znormalizowaną bazę danych składającą się z 6 tabel
 erDiagram
     USERS ||--|| WALLETS : posiada
     USERS ||--o{ ADS : wystawia
-    CATEGories ||--o{ ADS : zawiera
+    CATEGORIES ||--o{ ADS : zawiera
     USERS ||--o{ USER_ROLES : ma
     ROLES ||--o{ USER_ROLES : przypisana
     USERS ||--o{ TRANSACTIONS : wysyla
