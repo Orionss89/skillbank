@@ -1,74 +1,57 @@
-# SkillBank – Sąsiedzki Bank Umiejętności
+# SkillBank 2.0 – Profesjonalny System Wymiany Usług
 
 ## 📝 Opis Projektu
-**SkillBank** to innowacyjna platforma webowa typu "Time Banking" (Bank Czasu), stworzona jako projekt końcowy kursu Java Developer. Aplikacja rozwiązuje problem braku środków finansowych na usługi profesjonalne, umożliwiając użytkownikom wymianę umiejętności w modelu barterowym (godzina za godzinę).
+SkillBank to zaawansowana platforma backendowa typu "Time Banking", zaprojektowana zgodnie ze standardami **Enterprise Java Development**. Projekt kładzie nacisk na bezpieczeństwo, czystość architektury i separację warstw.
 
-### Główny cel
-Stworzenie bezpiecznego i skalowalnego środowiska, w którym społeczność może wymieniać się usługami (np. korepetycje za naprawę kranu), budując kapitał społeczny bez użycia pieniędzy.
-
----
-
-## 🛠️ Technologie i Narzędzia
-Projekt został zrealizowany zgodnie z najnowszymi standardami Java Developmentu:
-
-* **Backend:** Java 17, Spring Boot 3 (Web, Data JPA, Security, Validation)
-* **Baza Danych:** MySQL (Relacyjna)
-* **ORM:** Hibernate
-* **Bezpieczeństwo:** Spring Security + BCrypt (Szyfrowanie haseł)
-* **Testy:** JUnit 5 + Mockito (Testy jednostkowe logiki biznesowej)
-* **Dokumentacja API:** Swagger UI / OpenAPI
-* **Narzędzia:** Maven, Lombok, Postman
+### Kluczowe Cechy Architektury
+* **Wzorzec DTO (Data Transfer Object):** API nigdy nie zwraca encji bazodanowych. Dane są mapowane na bezpieczne obiekty transferowe.
+* **Separacja Warstw:** Logika biznesowa jest całkowicie oddzielona od Kontrolerów REST.
+* **Bezpieczeństwo:** Hasła są szyfrowane (BCrypt), a dostęp do kluczowych funkcji wymaga autoryzacji (Basic Auth).
+* **Walidacja:** Dane wejściowe są weryfikowane na poziomie DTO (`@Valid`, `@NotBlank`), a błędy obsługiwane globalnie.
 
 ---
 
-## 🚀 Funkcjonalności (MoSCoW)
-
-### MUST HAVE (Kluczowe funkcje zaimplementowane)
-1.  **Rejestracja i Bezpieczeństwo:**
-    * Tworzenie konta z walidacją danych.
-    * Automatyczne tworzenie Portfela (Wallet) z bonusem startowym (5h).
-    * Szyfrowanie haseł algorytmem BCrypt (Standard rynkowy).
-2.  **Zarządzanie Ogłoszeniami (CRUD):**
-    * Dodawanie ogłoszeń z przypisaniem do Kategorii.
-    * Przeglądanie listy dostępnych usług.
-3.  **System Transakcyjny (Core Logic):**
-    * Przelewanie "godzin" między użytkownikami za wykonane usługi.
-    * Pełna transakcyjność (`@Transactional`) – gwarancja spójności danych.
-    * Zabezpieczenie przed ujemnym saldem.
-    * Historia transakcji.
-
-### DODATKI (Extra Points)
-* **Integracja z zewnętrznym API:** Moduł motywacyjny pobierający losowe cytaty z zewnętrznego serwera.
-* **Data Loader:** Automatyczne uzupełnianie bazy danymi startowymi (Kategorie, Role) przy uruchomieniu.
-* **Automatyczna dokumentacja:** Wbudowany Swagger UI.
+## 🛠️ Stack Technologiczny
+* **Core:** Java 17, Spring Boot 3
+* **Data:** Spring Data JPA, Hibernate, MySQL
+* **Security:** Spring Security (Basic Auth + BCrypt)
+* **API Docs:** Swagger UI (OpenAPI)
+* **Testing:** JUnit 5, Mockito
+* **Utils:** Lombok, Maven
 
 ---
 
-## 💾 Schemat Bazy Danych (ERD)
+## 🚀 Funkcjonalności i Bezpieczeństwo
 
-Aplikacja wykorzystuje znormalizowaną bazę danych składającą się z 6 tabel połączonych relacjami (One-to-One, One-to-Many, Many-to-Many).
+### 1. Rejestracja i Autentykacja
+* Rejestracja użytkownika z automatycznym tworzeniem portfela.
+* Walidacja siły hasła i unikalności loginu.
+* Blokada dostępu do API dla niezalogowanych gości.
+
+### 2. System Transakcyjny
+* Przelewanie godzin między użytkownikami.
+* **Explicit Save:** Jawny zapis stanu portfeli w transakcji.
+* Zabezpieczenie przed ujemnym saldem i przelewami "do siebie".
+
+### 3. Ogłoszenia (Ad System)
+* Dodawanie i przeglądanie ogłoszeń.
+* Walidacja istnienia kategorii i użytkownika przed zapisem.
+* Odpowiedzi API zawierają nazwy kategorii/autorów zamiast zagnieżdżonych obiektów JSON.
+
+---
+
+## 💾 Schemat Danych (Zabezpieczony)
+Encje posiadają zabezpieczenia `@JsonIgnore` dla relacji dwukierunkowych oraz pól wrażliwych (hasło), co stanowi dodatkową warstwę ochrony obok DTO.
 
 ```mermaid
 erDiagram
-    USERS ||--|| WALLETS : posiada
-    USERS ||--o{ ADS : wystawia
-    CATEGORIES ||--o{ ADS : zawiera
-    USERS ||--o{ USER_ROLES : ma
-    ROLES ||--o{ USER_ROLES : przypisana
-    USERS ||--o{ TRANSACTIONS : wysyla
-    USERS ||--o{ TRANSACTIONS : odbiera
+    USERS ||--|| WALLETS : ma
+    USERS ||--o{ ADS : tworzy
+    CATEGORIES ||--o{ ADS : kategoryzuje
+    USERS ||--o{ TRANSACTIONS : wykonuje
 
     USERS {
         Long id
         String username
-        String password
-    }
-    WALLETS {
-        Long id
-        int balance
-    }
-    TRANSACTIONS {
-        Long id
-        int amount
-        DateTime timestamp
+        String password(HASH)
     }
