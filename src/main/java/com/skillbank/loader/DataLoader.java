@@ -41,7 +41,6 @@ public class DataLoader implements CommandLineRunner {
             System.out.println("--- ADDED STARTING ROLES ---");
         }
     }
-
     private void createCategory(String name) {
         Category category = new Category();
         category.setName(name);
