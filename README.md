@@ -1,57 +1,74 @@
 # SkillBank – Sąsiedzki Bank Umiejętności
 
 ## 📝 Opis Projektu
-**SkillBank** to innowacyjna platforma webowa typu "Time Banking", która umożliwia użytkownikom wymianę usług bez użycia tradycyjnych pieniędzy.
+**SkillBank** to innowacyjna platforma webowa typu "Time Banking" (Bank Czasu), stworzona jako projekt końcowy kursu Java Developer. Aplikacja rozwiązuje problem braku środków finansowych na usługi profesjonalne, umożliwiając użytkownikom wymianę umiejętności w modelu barterowym (godzina za godzinę).
 
-### Jaki problem rozwiązujemy?
-Wiele osób posiada cenne umiejętności (naprawy, edukacja, pomoc domowa), ale barierą w ich wykorzystaniu jest brak pieniędzy na opłacenie usług profesjonalnych. Nasza aplikacja łączy ludzi, pozwalając im płacić "czasem" – jedną godzinę pracy za jedną godzinę innej usługi.
-
-### Główne założenia
-* Wymiana usług w modelu barterowym (godzina za godzinę).
-* Budowanie zaufanej społeczności sąsiedzkiej.
-* Możliwość zdobycia pomocy bez angażowania środków finansowych.
+### Główny cel
+Stworzenie bezpiecznego i skalowalnego środowiska, w którym społeczność może wymieniać się usługami (np. korepetycje za naprawę kranu), budując kapitał społeczny bez użycia pieniędzy.
 
 ---
 
-## 🛠️ Wykorzystane Technologie
-Projekt został stworzony w oparciu o nowoczesne standardy Java Developmentu:
+## 🛠️ Technologie i Narzędzia
+Projekt został zrealizowany zgodnie z najnowszymi standardami Java Developmentu:
 
-* **Język:** Java 17
-* **Framework:** Spring Boot 3.x (Web, Data JPA, Validation)
-* **Baza Danych:** MySQL
-* **Narzędzia:** Maven, Lombok, Docker (opcjonalnie)
-* **Dokumentacja API:** Swagger / OpenAPI
-
----
-
-## 📋 Planowane Funkcjonalności (Metoda MoSCoW)
-
-### MUST HAVE (Kluczowe dla działania)
-* **Rejestracja i Logowanie:** Bezpieczny dostęp do konta.
-* **Portfel Godzin:** System naliczania i przechowywania salda czasu.
-* **Ogłoszenia (CRUD):** Dodawanie, edycja, usuwanie i przeglądanie ofert.
-* **Transakcje:** Przekazywanie waluty czasu między użytkownikami.
-* **Kategorie:** Grupowanie ogłoszeń (np. Edukacja, Dom).
-
-### SHOULD HAVE (Ważne rozszerzenia)
-* Historia transakcji użytkownika.
-* Wyszukiwanie i filtrowanie ogłoszeń.
-* Walidacja danych (np. blokada transakcji przy braku środków).
-
-### COULD HAVE (Dodatki)
-* System ocen i komentarzy po wykonanej usłudze.
-* Panel Administratora.
+* **Backend:** Java 17, Spring Boot 3 (Web, Data JPA, Security, Validation)
+* **Baza Danych:** MySQL (Relacyjna)
+* **ORM:** Hibernate
+* **Bezpieczeństwo:** Spring Security + BCrypt (Szyfrowanie haseł)
+* **Testy:** JUnit 5 + Mockito (Testy jednostkowe logiki biznesowej)
+* **Dokumentacja API:** Swagger UI / OpenAPI
+* **Narzędzia:** Maven, Lombok, Postman
 
 ---
 
-## 💾 Baza Danych
+## 🚀 Funkcjonalności (MoSCoW)
 
-Aplikacja korzysta z relacyjnej bazy danych MySQL. Struktura zawiera **5 głównych tabel** połączonych relacjami (One-to-Many oraz Many-to-Many).
+### MUST HAVE (Kluczowe funkcje zaimplementowane)
+1.  **Rejestracja i Bezpieczeństwo:**
+    * Tworzenie konta z walidacją danych.
+    * Automatyczne tworzenie Portfela (Wallet) z bonusem startowym (5h).
+    * Szyfrowanie haseł algorytmem BCrypt (Standard rynkowy).
+2.  **Zarządzanie Ogłoszeniami (CRUD):**
+    * Dodawanie ogłoszeń z przypisaniem do Kategorii.
+    * Przeglądanie listy dostępnych usług.
+3.  **System Transakcyjny (Core Logic):**
+    * Przelewanie "godzin" między użytkownikami za wykonane usługi.
+    * Pełna transakcyjność (`@Transactional`) – gwarancja spójności danych.
+    * Zabezpieczenie przed ujemnym saldem.
+    * Historia transakcji.
 
-### Schemat Logiczny
+### DODATKI (Extra Points)
+* **Integracja z zewnętrznym API:** Moduł motywacyjny pobierający losowe cytaty z zewnętrznego serwera.
+* **Data Loader:** Automatyczne uzupełnianie bazy danymi startowymi (Kategorie, Role) przy uruchomieniu.
+* **Automatyczna dokumentacja:** Wbudowany Swagger UI.
+
+---
+
+## 💾 Schemat Bazy Danych (ERD)
+
+Aplikacja wykorzystuje znormalizowaną bazę danych składającą się z 6 tabel połączonych relacjami (One-to-One, One-to-Many, Many-to-Many).
+
 ```mermaid
 erDiagram
-    USER ||--o{ ROLE : posiada
-    USER ||--o{ AD : wystawia
-    CATEGORY ||--o{ AD : zawiera
-    USER ||--o{ TRANSACTION : wykonuje
+    USERS ||--|| WALLETS : posiada
+    USERS ||--o{ ADS : wystawia
+    CATEGories ||--o{ ADS : zawiera
+    USERS ||--o{ USER_ROLES : ma
+    ROLES ||--o{ USER_ROLES : przypisana
+    USERS ||--o{ TRANSACTIONS : wysyla
+    USERS ||--o{ TRANSACTIONS : odbiera
+
+    USERS {
+        Long id
+        String username
+        String password
+    }
+    WALLETS {
+        Long id
+        int balance
+    }
+    TRANSACTIONS {
+        Long id
+        int amount
+        DateTime timestamp
+    }
