@@ -19,7 +19,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDTO dto) {
         try {
-            userService.registerUSer(dto);
+            userService.registerUser(dto);
             return ResponseEntity.ok("Rejestracja udana! Masz 5h na start.");
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
