@@ -2,14 +2,12 @@ package com.skillbank.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ads")
 @Data
 public class Ad {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

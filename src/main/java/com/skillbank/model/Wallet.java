@@ -4,12 +4,16 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "wallets")
 @Data
-public class Category {
+public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, unique = true)
-    private String name;
+
+    private int balance;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
