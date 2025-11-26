@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2798dd8-ab81-4c2c-8fe0-ec9018e21a92" name="Changes" comment="Security">
+    <list default="true" id="e2798dd8-ab81-4c2c-8fe0-ec9018e21a92" name="Changes" comment="Implementacja atomowych transakcji przelewu środków (@Transactional) logicznych">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/mapper/AdMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/SkillbankApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/SkillbankApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +67,11 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;HTTP Request.testy | #1.executor&quot;: &quot;Run&quot;,
     &quot;HTTP Request.testy | Test 1: Rejestracja nowego użytkownika.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TransactionServiceTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TransactionServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.TransactionServiceTest.testTransferHours_Success.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
@@ -99,6 +108,7 @@
         <entry key="HttpClient.HttpRequestRunConfigurationType">
           <value>
             <map>
+              <entry key="testy | #1" value="STOPPED" />
               <entry key="testy | Test 1: Rejestracja nowego użytkownika" value="STOPPED" />
             </map>
           </value>
@@ -106,9 +116,58 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SkillbankApplication">
+  <component name="RunManager" selected="JUnit.TransactionServiceTest (1)">
     <configuration name="testy | Test 1: Rejestracja nowego użytkownika" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/skillbank/testy.http" executionIdentifier="Test 1: Rejestracja nowego użytkownika" runType="Run single request">
       <method v="2" />
+    </configuration>
+    <configuration name="testy | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/skillbank/testy.http" executionIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="TransactionServiceTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skillbank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.skillbank.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.skillbank.service" />
+      <option name="MAIN_CLASS_NAME" value="com.skillbank.service.TransactionServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skillbank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.TransactionServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionServiceTest.testTransferHours_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skillbank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.skillbank.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.skillbank.service" />
+      <option name="MAIN_CLASS_NAME" value="com.skillbank.service.TransactionServiceTest" />
+      <option name="METHOD_NAME" value="testTransferHours_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="SkillbankApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="skillbank" />
@@ -119,6 +178,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TransactionServiceTest (1)" />
+        <item itemvalue="JUnit.TransactionServiceTest.testTransferHours_Success" />
+        <item itemvalue="JUnit.TransactionServiceTest" />
+        <item itemvalue="HTTP Request.testy | #1" />
         <item itemvalue="HTTP Request.testy | Test 1: Rejestracja nowego użytkownika" />
       </list>
     </recent_temporary>
@@ -147,6 +210,12 @@
       <workItem from="1764017016537" duration="283000" />
       <workItem from="1764017943769" duration="4057000" />
       <workItem from="1764056052465" duration="1484000" />
+      <workItem from="1764057710810" duration="108000" />
+      <workItem from="1764083395176" duration="5674000" />
+      <workItem from="1764098048653" duration="2730000" />
+      <workItem from="1764102702053" duration="7072000" />
+      <workItem from="1764185732484" duration="57000" />
+      <workItem from="1764185987533" duration="1189000" />
     </task>
     <task id="LOCAL-00001" summary="Dodanie konfiguracji bazy danych">
       <option name="closed" value="true" />
@@ -220,7 +289,135 @@
       <option name="project" value="LOCAL" />
       <updated>1764057524402</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Security">
+      <option name="closed" value="true" />
+      <created>1764057734134</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1764057734134</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update README.md">
+      <option name="closed" value="true" />
+      <created>1764098385387</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1764098385387</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Update README.md">
+      <option name="closed" value="true" />
+      <created>1764098531153</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1764098531153</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Update README.md">
+      <option name="closed" value="true" />
+      <created>1764105852410</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1764105852410</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Implementacja klas DTO dla żądań i odpowiedzi (separacja od encji)">
+      <option name="closed" value="true" />
+      <created>1764107835762</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1764107835762</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Implementacja kontrolerów REST i wystawienie endpointów dla wszystkich modułów">
+      <option name="closed" value="true" />
+      <created>1764108466935</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1764108466935</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Dodanie DataLoader zasilającego bazę kategoriami i rolami przy starcie">
+      <option name="closed" value="true" />
+      <created>1764108585847</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1764108585847</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Dodanie interfejsów Repozytoriów dla wszystkich encji">
+      <option name="closed" value="true" />
+      <created>1764108660575</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1764108660575</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Utworzenie encji User, Wallet, Ad, Transaction oraz relacji JPA">
+      <option name="closed" value="true" />
+      <created>1764108709910</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1764108709910</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Konfiguracja Spring Security, BCrypt oraz reguł dostępu do endpointów">
+      <option name="closed" value="true" />
+      <created>1764108762556</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1764108762556</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Implementacja logiki rejestracji z szyfrowaniem haseł i tworzeniem portfela">
+      <option name="closed" value="true" />
+      <created>1764108894024</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1764108894024</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Implementacja atomowych transakcji przelewu środków (@Transactional)orzeniem portfela">
+      <option name="closed" value="true" />
+      <created>1764108911489</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1764108911489</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Logika zarządzania ogłoszeniami oraz integracja z zewnętrznym API cytatów">
+      <option name="closed" value="true" />
+      <created>1764108969522</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1764108969522</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Dodanie zależności Spring Security, Validation i Swagger">
+      <option name="closed" value="true" />
+      <created>1764109030996</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1764109030996</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Dodanie GlobalExceptionHandler do obsługi walidacji i błędów logicznych">
+      <option name="closed" value="true" />
+      <created>1764109110433</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1764109110433</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Implementacja atomowych transakcji przelewu środków (@Transactional) logicznych">
+      <option name="closed" value="true" />
+      <created>1764187114460</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1764187114460</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +441,20 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Implementation of the Announcements module (CRUD): Controller, Service and DTO" />
     <MESSAGE value="Security" />
-    <option name="LAST_COMMIT_MESSAGE" value="Security" />
+    <MESSAGE value="Update README.md" />
+    <MESSAGE value="Implementacja klas DTO dla żądań i odpowiedzi (separacja od encji)" />
+    <MESSAGE value="Implementacja kontrolerów REST i wystawienie endpointów dla wszystkich modułów" />
+    <MESSAGE value="Dodanie DataLoader zasilającego bazę kategoriami i rolami przy starcie" />
+    <MESSAGE value="Dodanie interfejsów Repozytoriów dla wszystkich encji" />
+    <MESSAGE value="Utworzenie encji User, Wallet, Ad, Transaction oraz relacji JPA" />
+    <MESSAGE value="Konfiguracja Spring Security, BCrypt oraz reguł dostępu do endpointów" />
+    <MESSAGE value="Implementacja logiki rejestracji z szyfrowaniem haseł i tworzeniem portfela" />
+    <MESSAGE value="Implementacja atomowych transakcji przelewu środków (@Transactional)orzeniem portfela" />
+    <MESSAGE value="Logika zarządzania ogłoszeniami oraz integracja z zewnętrznym API cytatów" />
+    <MESSAGE value="Dodanie zależności Spring Security, Validation i Swagger" />
+    <MESSAGE value="Dodanie GlobalExceptionHandler do obsługi walidacji i błędów logicznych" />
+    <MESSAGE value="Implementacja atomowych transakcji przelewu środków (@Transactional) logicznych" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementacja atomowych transakcji przelewu środków (@Transactional) logicznych" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
