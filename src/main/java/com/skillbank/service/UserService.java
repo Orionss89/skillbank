@@ -2,7 +2,6 @@ package com.skillbank.service;
 
 import com.skillbank.dto.RegisterDTO;
 import com.skillbank.dto.UserResponseDTO;
-import com.skillbank.exception.BusinessException;
 import com.skillbank.exception.ResourceNotFoundException;
 import com.skillbank.mapper.UserMapper;
 import com.skillbank.model.*;
@@ -31,7 +30,7 @@ public class UserService {
         log.info("Rejestracja nowego użytkownika: {}", dto.getUsername());
 
         if (userRepository.findByUsername(dto.getUsername()).isPresent()) {
-            throw new BusinessException("Użytkownik o takim loginie już istnieje");
+            throw new ResourceNotFoundException("Użytkownik o takim loginie już istnieje");
         }
 
         User newUser = new User();
