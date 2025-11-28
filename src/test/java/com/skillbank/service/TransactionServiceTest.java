@@ -42,10 +42,9 @@ public class TransactionServiceTest {
         dto.setReceiverId(2L);
         dto.setAmount(2);
 
-        // ACT
+        
         transactionService.transferHours(dto);
 
-        // ASSERT
         assertEquals(8, senderWallet.getBalance());
         assertEquals(7, receiverWallet.getBalance());
 
