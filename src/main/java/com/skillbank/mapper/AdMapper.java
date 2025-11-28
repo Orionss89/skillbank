@@ -7,13 +7,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class AdMapper {
     public AdResponseDTO toDto(Ad ad) {
-        AdResponseDTO dto = new AdResponseDTO();
-        dto.setId(ad.getId());
-        dto.setTitle(ad.getTitle());
-        dto.setDescription(ad.getDescription());
-        dto.setCreatedAd(ad.getCreatedAd());
-        dto.setCategoryName(ad.getCategory().getName());
-        dto.setAuthorName(ad.getUser().getUsername());
-        return dto;
+
+        if (ad == null) return null;
+
+        return AdResponseDTO.builder()
+                .id(ad.getId())
+                .title(ad.getTitle())
+                .description(ad.getDescription())
+                .createdAd(ad.getCreatedAd())
+                .categoryName(ad.getCategory() != null ? ad.getCategory().getName() : "Brak kategorii")
+                .authorName(ad.getUser() != null ? ad.getUser().getUsername() : "Nieznany")
+                .build();
     }
 }

@@ -1,7 +1,11 @@
 package com.skillbank.dto;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@Builder
 public class UserResponseDTO {
     private Long id;
     private String username;

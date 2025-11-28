@@ -20,7 +20,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .anyRequest().permitAll() // ODBLOKOWANIE: Każdy może wejść bez hasła
+                        .anyRequest().permitAll()
                 );
 
         return http.build();

@@ -3,22 +3,23 @@
 ## 📝 Opis Projektu
 SkillBank to zaawansowana platforma backendowa typu "Time Banking", zaprojektowana zgodnie ze standardami **Enterprise Java Development**. Projekt kładzie nacisk na bezpieczeństwo, czystość architektury i separację warstw.
 
-### Kluczowe Cechy Architektury
-* **Wzorzec DTO (Data Transfer Object):** API nigdy nie zwraca encji bazodanowych. Dane są mapowane na bezpieczne obiekty transferowe.
-* **Separacja Warstw:** Logika biznesowa jest całkowicie oddzielona od Kontrolerów REST.
-* **Bezpieczeństwo:** Hasła są szyfrowane (BCrypt), a dostęp do kluczowych funkcji wymaga autoryzacji (Basic Auth).
-* **Walidacja:** Dane wejściowe są weryfikowane na poziomie DTO (`@Valid`, `@NotBlank`), a błędy obsługiwane globalnie.
+### Kluczowe rozwiązania:
+* **Separacja Warstw (DTO & Mappers):** API nigdy nie zwraca wewnętrznych encji bazy danych. Zastosowano wzorzec DTO (Data Transfer Object) oraz Mappery, aby oddzielić warstwę prezentacji od warstwy danych. Zwiększa to bezpieczeństwo (brak wycieku haseł) i elastyczność.
+* **Globalna Obsługa Błędów (Centralized Error Handling):** Zamiast bloków `try-catch` w kontrolerach, zaimplementowano `GlobalExceptionHandler` (oparty o `@ControllerAdvice`). Aplikacja zwraca spójne komunikaty błędów JSON (z kodami 400/404/500) dzięki własnym wyjątkom (`BusinessException`, `ResourceNotFoundException`).
+* **Logowanie (SLF4J):** Zastąpiono standardowe wyjście konsoli profesjonalnym logowaniem zdarzeń, co pozwala na monitorowanie działania aplikacji w środowisku produkcyjnym.
+* **Bezpieczeństwo i Walidacja:**
+    * Walidacja danych wejściowych na poziomie DTO (`@Valid`, `@NotBlank`).
+    * Szyfrowanie haseł algorytmem BCrypt.
+* **Czysty Kod (Lombok & DI):** Wykorzystanie `@RequiredArgsConstructor` do wstrzykiwania zależności przez konstruktor (Constructor Injection) oraz wzorca Builder do tworzenia obiektów.
 
 ---
 
 ## 🛠️ Stack Technologiczny
 * **Core:** Java 17, Spring Boot 3
 * **Data:** Spring Data JPA, Hibernate, MySQL
-* **Security:** Spring Security (Basic Auth + BCrypt)
-* **API Docs:** Swagger UI (OpenAPI)
+* **Documentation:** Swagger UI (OpenAPI)
 * **Testing:** JUnit 5, Mockito
-* **Utils:** Lombok, Maven
-
+* **Utils:** Lombok, Maven, SLF4J (Logging)
 ---
 
 ## 🚀 Funkcjonalności i Bezpieczeństwo

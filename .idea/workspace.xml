@@ -4,14 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2798dd8-ab81-4c2c-8fe0-ec9018e21a92" name="Changes" comment="Implementacja atomowych transakcji przelewu środków (@Transactional) logicznych">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/mapper/AdMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="e2798dd8-ab81-4c2c-8fe0-ec9018e21a92" name="Changes" comment="Finalizacja">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/exception/BusinessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/exception/ResourceNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/SkillbankApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/SkillbankApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/controller/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/controller/AdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/dto/AdResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/dto/AdResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/dto/ErrorResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/dto/ErrorResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/dto/UserResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/dto/UserResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/loader/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/loader/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/mapper/AdMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/mapper/AdMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/service/AdService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/service/AdService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skillbank/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skillbank/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +127,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TransactionServiceTest (1)">
+  <component name="RunManager" selected="Spring Boot.SkillbankApplication">
     <configuration name="testy | Test 1: Rejestracja nowego użytkownika" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/src/main/java/com/skillbank/testy.http" executionIdentifier="Test 1: Rejestracja nowego użytkownika" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -215,7 +226,10 @@
       <workItem from="1764098048653" duration="2730000" />
       <workItem from="1764102702053" duration="7072000" />
       <workItem from="1764185732484" duration="57000" />
-      <workItem from="1764185987533" duration="1189000" />
+      <workItem from="1764185987533" duration="1983000" />
+      <workItem from="1764270082664" duration="5697000" />
+      <workItem from="1764276871934" duration="991000" />
+      <workItem from="1764324782749" duration="1004000" />
     </task>
     <task id="LOCAL-00001" summary="Dodanie konfiguracji bazy danych">
       <option name="closed" value="true" />
@@ -417,7 +431,23 @@
       <option name="project" value="LOCAL" />
       <updated>1764187114460</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Dodanie mapperów do konwersji między Encjami a DTO">
+      <option name="closed" value="true" />
+      <created>1764187212512</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1764187212513</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Finalizacja">
+      <option name="closed" value="true" />
+      <created>1764187288570</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1764187288570</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,7 +484,9 @@
     <MESSAGE value="Dodanie zależności Spring Security, Validation i Swagger" />
     <MESSAGE value="Dodanie GlobalExceptionHandler do obsługi walidacji i błędów logicznych" />
     <MESSAGE value="Implementacja atomowych transakcji przelewu środków (@Transactional) logicznych" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementacja atomowych transakcji przelewu środków (@Transactional) logicznych" />
+    <MESSAGE value="Dodanie mapperów do konwersji między Encjami a DTO" />
+    <MESSAGE value="Finalizacja" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalizacja" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
