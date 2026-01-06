@@ -1,55 +1,61 @@
-# SkillBank 2.0 – Profesjonalny System Wymiany Usług
+# SkillBank 2.0 – Professional Service Exchange System
 
-## 📝 Opis Projektu
-SkillBank to zaawansowana platforma backendowa typu "Time Banking", zaprojektowana zgodnie ze standardami **Enterprise Java Development**. Projekt kładzie nacisk na bezpieczeństwo, czystość architektury i separację warstw.
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-green)
+![Hibernate](https://img.shields.io/badge/Hibernate-ORM-brown)
+![MySQL](https://img.shields.io/badge/Database-MySQL-blue)
 
-### Kluczowe rozwiązania:
-* **Separacja Warstw (DTO & Mappers):** API nigdy nie zwraca wewnętrznych encji bazy danych. Zastosowano wzorzec DTO (Data Transfer Object) oraz Mappery, aby oddzielić warstwę prezentacji od warstwy danych. Zwiększa to bezpieczeństwo (brak wycieku haseł) i elastyczność.
-* **Globalna Obsługa Błędów (Centralized Error Handling):** Zamiast bloków `try-catch` w kontrolerach, zaimplementowano `GlobalExceptionHandler` (oparty o `@ControllerAdvice`). Aplikacja zwraca spójne komunikaty błędów JSON (z kodami 400/404/500) dzięki własnym wyjątkom (`BusinessException`, `ResourceNotFoundException`).
-* **Logowanie (SLF4J):** Zastąpiono standardowe wyjście konsoli profesjonalnym logowaniem zdarzeń, co pozwala na monitorowanie działania aplikacji w środowisku produkcyjnym.
-* **Bezpieczeństwo i Walidacja:**
-    * Walidacja danych wejściowych na poziomie DTO (`@Valid`, `@NotBlank`).
-    * Szyfrowanie haseł algorytmem BCrypt.
-* **Czysty Kod (Lombok & DI):** Wykorzystanie `@RequiredArgsConstructor` do wstrzykiwania zależności przez konstruktor (Constructor Injection) oraz wzorca Builder do tworzenia obiektów.
+## 📝 Project Description
+SkillBank is an advanced backend "Time Banking" platform, designed in accordance with **Enterprise Java Development** standards. The project emphasizes security, clean architecture, and separation of concerns.
+
+### Key Solutions:
+* **Layer Separation (DTO & Mappers):** The API never returns internal database entities. The DTO (Data Transfer Object) pattern and Mappers were implemented to separate the presentation layer from the data layer. This increases security (prevention of password leakage) and flexibility.
+* **Global Error Handling:** Instead of `try-catch` blocks in controllers, a `GlobalExceptionHandler` (based on `@ControllerAdvice`) was implemented. The application returns consistent JSON error messages (with 400/404/500 codes) thanks to custom exceptions (`BusinessException`, `ResourceNotFoundException`).
+* **Logging (SLF4J):** Standard console output was replaced with professional event logging, allowing for the monitoring of application activity in a production environment.
+* **Security and Validation:**
+    * Input data validation at the DTO level (`@Valid`, `@NotBlank`).
+    * Password hashing using the BCrypt algorithm.
+* **Clean Code (Lombok & DI):** Utilization of `@RequiredArgsConstructor` for dependency injection via constructor (Constructor Injection) and the Builder pattern for object creation.
 
 ---
 
-## 🛠️ Stack Technologiczny
+## 🛠️ Tech Stack
 * **Core:** Java 17, Spring Boot 3
 * **Data:** Spring Data JPA, Hibernate, MySQL
 * **Documentation:** Swagger UI (OpenAPI)
 * **Testing:** JUnit 5, Mockito
 * **Utils:** Lombok, Maven, SLF4J (Logging)
----
-
-## 🚀 Funkcjonalności i Bezpieczeństwo
-
-### 1. Rejestracja i Autentykacja
-* Rejestracja użytkownika z automatycznym tworzeniem portfela.
-* Walidacja siły hasła i unikalności loginu.
-* Blokada dostępu do API dla niezalogowanych gości.
-
-### 2. System Transakcyjny
-* Przelewanie godzin między użytkownikami.
-* **Explicit Save:** Jawny zapis stanu portfeli w transakcji.
-* Zabezpieczenie przed ujemnym saldem i przelewami "do siebie".
-
-### 3. Ogłoszenia (Ad System)
-* Dodawanie i przeglądanie ogłoszeń.
-* Walidacja istnienia kategorii i użytkownika przed zapisem.
-* Odpowiedzi API zawierają nazwy kategorii/autorów zamiast zagnieżdżonych obiektów JSON.
 
 ---
 
-## 💾 Schemat Danych (Zabezpieczony)
-Encje posiadają zabezpieczenia `@JsonIgnore` dla relacji dwukierunkowych oraz pól wrażliwych (hasło), co stanowi dodatkową warstwę ochrony obok DTO.
+## 🚀 Functionalities
+
+### 1. Registration and Authentication
+* User registration with automatic wallet creation.
+* Validation of password strength and login uniqueness.
+* API access restriction for unauthenticated guests.
+
+### 2. Transaction System
+* Transferring hours between users.
+* **Explicit Save:** Explicit saving of wallet states within a transaction.
+* Protection against negative balances and "self-transfers".
+
+### 3. Ads (Ad System)
+* Adding and browsing ads/listings.
+* Validation of category and user existence before saving.
+* API responses contain category/author names instead of nested JSON objects.
+
+---
+
+## 💾 Data Schema
+Entities feature `@JsonIgnore` safeguards for bidirectional relationships and sensitive fields (passwords).
 
 ```mermaid
 erDiagram
-    USERS ||--|| WALLETS : ma
-    USERS ||--o{ ADS : tworzy
-    CATEGORIES ||--o{ ADS : kategoryzuje
-    USERS ||--o{ TRANSACTIONS : wykonuje
+    USERS ||--|| WALLETS : has
+    USERS ||--o{ ADS : creates
+    CATEGORIES ||--o{ ADS : categorizes
+    USERS ||--o{ TRANSACTIONS : executes
 
     USERS {
         Long id
