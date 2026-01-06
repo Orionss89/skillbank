@@ -5,11 +5,11 @@ import lombok.Data;
 
 @Data
 public class RegisterDTO {
-    @NotBlank(message = "Login jest wymagany")
-    @Size(min = 3, message = "Login musi mieć min. 3 znaki")
+    @NotBlank(message = "Login is required")
+    @Size(min = 3, message = "Login must be at least 3 characters")
     private String username;
 
-    @NotBlank(message = "Hasło jest wymagane")
-    @Size(min = 6, message = "Hasło musi mieć min. 6 znaków")
+    @NotBlank(message = "Password is required")
+    @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 }

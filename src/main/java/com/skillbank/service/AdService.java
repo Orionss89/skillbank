@@ -26,10 +26,10 @@ public class AdService {
     @Transactional
     public void addAd(AdDTO dto) {
         User user = userRepository.findById(dto.getUserId())
-                .orElseThrow(() -> new ResourceNotFoundException("Użytkownik nie istnieje"));
+                .orElseThrow(() -> new ResourceNotFoundException("User does not exist"));
 
         Category category = categoryRepository.findById(dto.getCategoryId())
-                .orElseThrow(() -> new ResourceNotFoundException("Kategoria nie istnieje"));
+                .orElseThrow(() -> new ResourceNotFoundException("Category does not exist"));
 
         Ad ad = new Ad();
         ad.setTitle(dto.getTitle());
@@ -44,6 +44,6 @@ public class AdService {
     public List<AdResponseDTO> getAllAds() {
         return adRepository.findAll().stream()
                 .map(adMapper::toDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

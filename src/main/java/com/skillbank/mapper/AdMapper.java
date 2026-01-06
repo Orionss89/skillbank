@@ -15,8 +15,8 @@ public class AdMapper {
                 .title(ad.getTitle())
                 .description(ad.getDescription())
                 .createdAd(ad.getCreatedAd())
-                .categoryName(ad.getCategory() != null ? ad.getCategory().getName() : "Brak kategorii")
-                .authorName(ad.getUser() != null ? ad.getUser().getUsername() : "Nieznany")
+                .categoryName(ad.getCategory() != null ? ad.getCategory().getName() : "No category")
+                .authorName(ad.getUser() != null ? ad.getUser().getUsername() : "Unknown")
                 .build();
     }
 }

@@ -23,22 +23,22 @@ public class TransactionService {
 
     @Transactional
     public void transferHours(TransactionDTO dto) {
-        log.info("Próba przelewu: {}h od ID {} do ID {}", dto.getAmount(), dto.getSenderId(), dto.getReceiverId());
+        log.info("Initiating transfer: {}h from ID {} to ID {}", dto.getAmount(), dto.getSenderId(), dto.getReceiverId());
 
         User sender = userRepository.findById(dto.getSenderId())
-                .orElseThrow(() -> new ResourceNotFoundException("Nie znaleziono nadawcy o ID: " + dto.getSenderId()));
+                .orElseThrow(() -> new ResourceNotFoundException("Sender not found with ID: " + dto.getSenderId()));
 
         User receiver = userRepository.findById(dto.getReceiverId())
-                .orElseThrow(() -> new ResourceNotFoundException("Nie znaleziono odbiorcy o ID: " + dto.getReceiverId()));
+                .orElseThrow(() -> new ResourceNotFoundException("Recipient not found with ID:: " + dto.getReceiverId()));
 
         if (sender.getId().equals(receiver.getId())) {
-            throw new BusinessException("Nie można przelać środków samemu sobie");
+            throw new BusinessException("Cannot transfer funds to yourself");
         }
 
         Wallet senderWallet = sender.getWallet();
         if (senderWallet.getBalance() < dto.getAmount()) {
-            log.warn("Brak środków u użytkownika: {}", sender.getUsername());
-            throw new BusinessException("Niewystarczające środki w portfelu");
+            log.warn("User has no funds: {}", sender.getUsername());
+            throw new BusinessException("Insufficient funds in wallet");
         }
 
         senderWallet.setBalance(senderWallet.getBalance() - dto.getAmount());
@@ -54,6 +54,6 @@ public class TransactionService {
         transaction.setTimestamp(LocalDateTime.now());
         transactionRepository.save(transaction);
 
-        log.info("Przelew zakończony sukcesem.");
+        log.info("Transfer successful");
     }
 }

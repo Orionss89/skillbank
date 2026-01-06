@@ -22,13 +22,13 @@ public class DataLoader implements CommandLineRunner {
         if (0 == roleRepository.count()) {
             saveRole("ROLE_USER");
             saveRole("ROLE_ADMIN");
-            log.info("--- ZAINICJOWANO ROLE ---");
+            log.info("--- Roles initialized ---");
         }
 
         if (0 == categoryRepository.count()) {
-            saveCategory("Edukacja");
-            saveCategory("Naprawy");
-            log.info("--- ZAINICJOWANO KATEGORIE ---");
+            saveCategory("Education");
+            saveCategory("Repairs");
+            log.info("--- Categories initialized ---");
         }
     }
 

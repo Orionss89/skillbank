@@ -27,10 +27,10 @@ public class UserService {
 
     @Transactional
     public UserResponseDTO registerUser(RegisterDTO dto) {
-        log.info("Rejestracja nowego użytkownika: {}", dto.getUsername());
+        log.info("New user registration: {}", dto.getUsername());
 
         if (userRepository.findByUsername(dto.getUsername()).isPresent()) {
-            throw new ResourceNotFoundException("Użytkownik o takim loginie już istnieje");
+            throw new ResourceNotFoundException("User with this login already exists");
         }
 
         User newUser = new User();
@@ -44,8 +44,8 @@ public class UserService {
 
         Role userRole = roleRepository.findByName("ROLE_USER");
         if (userRole == null) {
-            log.error("Błąd krytyczny: Brak roli ROLE_USER w bazie danych!");
-            throw new ResourceNotFoundException("Błąd systemu: Rola domyślna nie istnieje");
+            log.error("Critical error: ROLE_USER not found in the database!");
+            throw new ResourceNotFoundException("System error: Default role does not exist");
         }
 
         Set<Role> roles = new HashSet<>();
@@ -53,7 +53,7 @@ public class UserService {
         newUser.setRoles(roles);
 
         User savedUser = userRepository.save(newUser);
-        log.info("Użytkownik {} zarejestrowany z ID {}", savedUser.getUsername(), savedUser.getId());
+        log.info("User {} registered with ID {}", savedUser.getUsername(), savedUser.getId());
 
         return userMapper.toDto(savedUser);
     }

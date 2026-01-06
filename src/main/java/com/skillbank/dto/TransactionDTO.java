@@ -5,12 +5,12 @@ import lombok.Data;
 
 @Data
 public class TransactionDTO {
-    @NotNull(message = "Nadawca jest wymagany")
+    @NotNull(message = "Sender is required")
     private Long senderId;
 
-    @NotNull(message = "Odbiorca jest wymagany")
+    @NotNull(message = "Recipient is required")
     private Long receiverId;
 
-    @Min(value = 1, message = "Kwota musi być większa od 0")
+    @Min(value = 1, message = "Amount must be greater than 0")
     private int amount;
 }

@@ -19,7 +19,7 @@ public class AdController {
     @PostMapping
     public ResponseEntity<String> addAd(@Valid @RequestBody AdDTO dto) {
         adService.addAd(dto);
-        return ResponseEntity.ok("Ogłoszenie dodane!");
+        return ResponseEntity.ok("Success! Your ad has been posted");
     }
 
     @GetMapping

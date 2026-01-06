@@ -22,8 +22,8 @@ public class MotivationService {
                 return "\"" + response.getQuote() + "\" - " + response.getAuthor();
             }
         } catch (Exception e) {
-            System.err.println("Błąd pobierania cytatu: " + e.getMessage());
+            System.err.println("Failed to load quote: " + e.getMessage());
         }
-        return "Pamiętaj: Nawet najdłuższa podróż zaczyna się od jednego kroku. (Tryb Offline)";
+        return "Remember: Even the longest journey begins with a single step. (Offline Mode)";
     }
 }

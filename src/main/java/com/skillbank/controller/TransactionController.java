@@ -17,6 +17,6 @@ public class TransactionController {
     @PostMapping
     public ResponseEntity<String> makeTransfer(@Valid @RequestBody TransactionDTO dto) {
         transactionService.transferHours(dto);
-        return ResponseEntity.ok("Przelew wykonany pomyślnie!");
+        return ResponseEntity.ok("Transfer successful!");
     }
 }
